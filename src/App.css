@@ -31,3 +31,16 @@
     transform: rotate(360deg);
   }
 }
+
+.ReactVirtualized__Grid {
+  user-select: none;
+}
+
+.ReactVirtualized__Grid .cell {
+  border: 1px solid rgb(40, 44, 52, 0.15)
+}
+
+.ReactVirtualized__Grid .cell.selected {
+  border: 1px solid rgb(97, 218, 251);
+  background-color: rgba(97, 218, 251, 0.3)
+}

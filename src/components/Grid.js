@@ -2,8 +2,6 @@ import 'react-virtualized/styles.css'
 import React from 'react'
 // import { Grid } from 'react-virtualized'
 import Grid from './VirtualizeGrid'
-import _min from 'lodash/min'
-import _max from 'lodash/max'
 import { HARD_DATA, SCHEMA } from '../utils/LargeTable'
 
 class CustomGrid extends React.Component {
@@ -46,10 +44,10 @@ class CustomGrid extends React.Component {
             const currentSelected = e.target.classList[1]
             const [_, rowIndex, columnIndex] = currentSelected.split('-')
             const [startRowIndex, startColIndex] = this.state.startSelected.split('-')
-            const minRowIndex = _min([Number(rowIndex), Number(startRowIndex)])
-            const maxRowIndex = _max([Number(rowIndex), Number(startRowIndex)])
-            const minColIndex = _min([Number(columnIndex), Number(startColIndex)])
-            const maxColIndex = _max([Number(columnIndex), Number(startColIndex)])
+            const minRowIndex = Math.min(Number(rowIndex), Number(startRowIndex))
+            const maxRowIndex = Math.max(Number(rowIndex), Number(startRowIndex))
+            const minColIndex = Math.min(Number(columnIndex), Number(startColIndex))
+            const maxColIndex = Math.max(Number(columnIndex), Number(startColIndex))
 
             let newSelecteds = []
             for(let i = minRowIndex; i <= maxRowIndex; i++) {

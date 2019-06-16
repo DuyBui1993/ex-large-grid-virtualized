@@ -1,7 +1,9 @@
 import 'react-virtualized/styles.css'
 import React from 'react'
-import { Grid } from 'react-virtualized'
-import _ from 'lodash'
+// import { Grid } from 'react-virtualized'
+import Grid from './VirtualizeGrid'
+import _min from 'lodash/min'
+import _max from 'lodash/max'
 import { HARD_DATA, SCHEMA } from '../utils/LargeTable'
 
 class CustomGrid extends React.Component {
@@ -42,12 +44,12 @@ class CustomGrid extends React.Component {
           if (!this.state.isDragSelection) return
           if (e.target && e.target.classList[1] && e.target.classList[1].includes('cell-')) {
             const currentSelected = e.target.classList[1]
-            const [__, rowIndex, columnIndex] = currentSelected.split('-')
+            const [_, rowIndex, columnIndex] = currentSelected.split('-')
             const [startRowIndex, startColIndex] = this.state.startSelected.split('-')
-            const minRowIndex = _.min([Number(rowIndex), Number(startRowIndex)])
-            const maxRowIndex = _.max([Number(rowIndex), Number(startRowIndex)])
-            const minColIndex = _.min([Number(columnIndex), Number(startColIndex)])
-            const maxColIndex = _.max([Number(columnIndex), Number(startColIndex)])
+            const minRowIndex = _min([Number(rowIndex), Number(startRowIndex)])
+            const maxRowIndex = _max([Number(rowIndex), Number(startRowIndex)])
+            const minColIndex = _min([Number(columnIndex), Number(startColIndex)])
+            const maxColIndex = _max([Number(columnIndex), Number(startColIndex)])
 
             let newSelecteds = []
             for(let i = minRowIndex; i <= maxRowIndex; i++) {

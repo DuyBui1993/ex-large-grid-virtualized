@@ -10,7 +10,7 @@ for (let i = 0; i < 1000; i++) {
 // generate rows - sample : 1.000 rows
 var cellIndex = 0
 for (let i = 0; i < 1000; i++) {
-  data.push(schemas.map(col => ++cellIndex))
+  data.push(schemas.map(_ => ++cellIndex))
 }
 
 export const HARD_DATA = data
